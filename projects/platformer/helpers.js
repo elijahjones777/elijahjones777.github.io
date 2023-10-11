@@ -131,7 +131,7 @@ function debug() {
   ctx.fillText("offsetx" + offsetX, 150 + player.x, player.y + 40);
   ctx.fillText("offsetY" + offsetY, 150 + player.x, player.y + 60);
 
-  ctx.fillStyle = "grey";
+  ctx.fillStyle = "green";
   ctx.fillRect(player.x, player.y, player.width, player.height);
 
   //debug showing collision
@@ -411,7 +411,7 @@ function playerFrictionAndGravity() {
 
 function drawPlatforms() {
   for (var i = 0; i < platforms.length; i++) {
-    ctx.fillStyle = "grey";
+    ctx.fillStyle = "Black";
     ctx.fillRect(
       platforms[i].x,
       platforms[i].y,
