@@ -8,17 +8,46 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: rgb(0, 153, 13);
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 0px;  /* <--- Change me! */
+			left: 200px;  /* <--- Change me! */
 		}
 		.board{
-			height: 100vh;
+			height: 100%;
+			width: 100%;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			animation: rainbow 18s ease infinite;
+			background: linear-gradient(
+				124deg,
+				#ff2400,
+				#e81d1d,
+				#e8b71d,
+				#e3e81d,
+				#1de840,
+				#1ddde8,
+				#2b1de8,
+				#dd00f3,
+				#dd00f3
+			);
+			@keyframes rainbow {
+				0%{
+					background-position: 0% 82%;
+				}
+				5%{
+					background-position: 100% 19%;
+				}
+				100%{
+					background-position: 0% 82%;
+				}
+			}
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -62,17 +91,22 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
-
-			
+			var positionX = 0;
+			var points = 0;
+			var speed = 0;
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
 			function update() {
-				
+				/* Your Function Call Here */
+				positionX = positionX + speed;
+				moveBoxTo(positionX);
 
+				if (positionX > boardWidth || positionX < 0){
+					speed = -speed
+				}
 			};
 
 			/* 
@@ -81,9 +115,10 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
-
-
+				speed += 20;
+				positionX = 0;
+				points+= 1;
+				changeBoxText(points);
 			};
 		})();
 	</script>
